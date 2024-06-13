@@ -1,6 +1,6 @@
-
 import random
 from sympy import Matrix, latex, eye
+from sympy.combinatorics import Permutation
 import json
 
 
@@ -13,21 +13,17 @@ upper = [[1 if i == j else 0 if i < j else int(random.random()*scale) for j in r
 ## The following code generates an lower triangular matrix
 lower = [[1 if i == j else 0 if i > j else int(random.random()*scale) for j in range(n)] for i in range(n)]
 
-## The following code, using fisher's shuffle algorithm, generates a partition of [0,...,n-1]
+## The following code, we generate a random switching matrix.
 switch = list(range(n))
-for i in range(n):
-    k = int(random.random()*(n-i))
-    switch[i],switch[k] = switch[k],switch[i]
+random.shuffle(switch)
+sw = eye(n)[switch,:]
 
-    
-## The following code generates a switching matrix
-swi = [[1 if i == switch[j] else 0 for i in range(n)]for j in range(n)]
   
 
 ## Pack the above into matrices that can be processed by sympy
 up = Matrix(upper)
 lo = Matrix(lower)
-sw = Matrix(swi)
+
 
 ## The following matrix is going to give the student as content of exercise
 
@@ -59,6 +55,7 @@ if(givenMatrix*user!=eye(3)):
 
 print(rf"You have suggest that $$A^{{-1}}={latex(user)}$$")
 print(rf"We verify your result $$\underbrace{{{latex(givenMatrix)}}}_A\times {latex(user)} = {latex(givenMatrix*user)}$$ ")
+
 
 
 
