@@ -36,25 +36,29 @@ X = json.loads(input())#matrix
 
 if len(X)!=1:
   raise Exception(f"You should enter exactly one matrix, but {len(X)} many matrices are detected")
-  
-if len(X[0])!= n:
-  raise Exception(f"Your matrix must have {n} columns, but now your matrix have {len(X[0])} columns")
 
-if len(X[0][0])!= n:
-  raise Exception(f"Your matrix must have {n} rows, but now your matrix have {len(X[0][0])} columns")
+userMatrix = Matrix(X[0])
+
+if userMatrix.cols!= n:
+  raise Exception(f"Your matrix must have {n} columns, but now your matrix have {userMatrix.cols} columns")
+
+if userMatrix.rows!= n:
+  raise Exception(f"Your matrix must have {n} rows, but now your matrix have {userMatrix.rows} rows")
   
  
+verification = rf"""
+$$\underbrace{{{latex(givenMatrix)}}}_A\times {latex(userMatrix)} = {latex(givenMatrix*userMatrix)}$$
+"""
 
 
 
-user = Matrix(X[0])
 
+if(givenMatrix*userMatrix!=eye(3)):
+  raise Exception(rf"You have suggest that $$A^{{-1}}={latex(userMatrix)}$$. However, {verification}")
 
-if(givenMatrix*user!=eye(3)):
-  raise Exception(rf"You have suggest that $$A^{{-1}}={latex(user)}$$. However, based on my calculation. $$\underbrace{{{latex(givenMatrix)}}}_A\times {latex(user)} = {latex(givenMatrix*user)}$$")
+print(rf"You have suggest that $$A^{{-1}}={latex(userMatrix)}$$")
+print(rf"We verify your result {verification}")
 
-print(rf"You have suggest that $$A^{{-1}}={latex(user)}$$")
-print(rf"We verify your result $$\underbrace{{{latex(givenMatrix)}}}_A\times {latex(user)} = {latex(givenMatrix*user)}$$ ")
 
 
 
