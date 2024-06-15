@@ -32,18 +32,18 @@ givenMatrix = sw*up*lo
 print("Please find the inverse of the following matrix.")
 print(f"$$A={latex(givenMatrix)}$$")
 
-X = json.loads(input())#matrix
+X = json.loads(input())#matrixlist
 
 if len(X)!=1:
-  raise Exception(f"You should enter exactly one matrix, but {len(X)} many matrices are detected")
+  raise Exception(f"You should enter exactly one matrix, but {len(X)} many matrices are detected") #score = 0.1
 
 userMatrix = Matrix(X[0])
 
 if userMatrix.cols!= n:
-  raise Exception(f"Your matrix must have {n} columns, but now your matrix have {userMatrix.cols} columns")
+  raise Exception(f"Your matrix must have {n} columns, but now your matrix have {userMatrix.cols} columns") #score=0.3
 
 if userMatrix.rows!= n:
-  raise Exception(f"Your matrix must have {n} rows, but now your matrix have {userMatrix.rows} rows")
+  raise Exception(f"Your matrix must have {n} rows, but now your matrix have {userMatrix.rows} rows") #score = 0.6
   
  
 verification = rf"""
@@ -54,7 +54,7 @@ $$\underbrace{{{latex(givenMatrix)}}}_A\times {latex(userMatrix)} = {latex(given
 
 
 if(givenMatrix*userMatrix!=eye(3)):
-  raise Exception(rf"You have suggest that $$A^{{-1}}={latex(userMatrix)}$$. However, {verification}")
+  raise Exception(rf"You have suggest that $$A^{{-1}}={latex(userMatrix)}$$. However, {verification}") #score=0.9
 
 print(rf"You have suggest that $$A^{{-1}}={latex(userMatrix)}$$")
 print(rf"We verify your result {verification}")
