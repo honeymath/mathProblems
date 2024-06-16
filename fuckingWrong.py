@@ -40,4 +40,3 @@ if answer == 'YES':
         raise Exception(rf"But $UU^T\neq A$...")
 
 
-
