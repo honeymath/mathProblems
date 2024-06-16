@@ -23,7 +23,7 @@ if answer == 'YES':
     print(rf"""
     You mentioned it is a positive semi-definite matrix. Please decompose it into $A=LL^T$ where $L$ is a lower triangular matrix. Please enter your matrix $U$.
     """)
-    X = json.loads(input())  # matrixlist
+    X = json.loads(input())  #matrixlist
     if (k := len(X)) != 1:
         raise Exception(rf"You are required to enter 1 matrix, but {k} matrices detected")
 
