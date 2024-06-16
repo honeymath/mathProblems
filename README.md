@@ -26,4 +26,7 @@ The goal of the project is being able to produce such problem scripts by large l
 [Finding Basis](basisEquations.py)
 [Find pairwise linearly independent vectors](pairwiseIndependentDependentVectors.py)
 [Eigenvalue and Eigenvectors](eigenvalueEigenvector.py)
-[Semi Positive Definite](semiPositiveDefinite.py)
+[Semi Positive Definite](Example/semiPositiveDefinite.py)
+[Semi Positive Definite](Example/semiPositiveDefinite_Exercise.py)
+[Semi Positive Definite](Example/semiPositiveDefinite_Grading.py)
+[Semi Positive Definite](Example/semiPositiveDefinite_Solution.py)
